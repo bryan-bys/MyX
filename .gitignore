@@ -1,0 +1,4 @@
+dn.sqlite3
+env
+__pycache__
+data.json
