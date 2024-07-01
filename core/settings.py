@@ -94,11 +94,19 @@ DATABASES = {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
-     'default': dj_database_url.config(
-        # Replace this value with your local database's connection string.
-        default='postgresql://postgres:postgres@localhost:5432/mysite',
-        conn_max_age=600
-    )
+    #  'default': dj_database_url.config(
+    #     # Replace this value with your local database's connection string.
+    #      default='postgresql://mycoffeeshop_user:zFbNXjQn0gfThXufHWHpmymZqAjLR4nl@dpg-cpu2oqt2ng1s73ea2c90-a.oregon-postgres.render.com/MyX',
+    #     conn_max_age=600
+    # )
+        'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'myX2',
+        'USER': 'mycoffeeshop_user',
+        'PASSWORD': 'zFbNXjQn0gfThXufHWHpmymZqAjLR4nl',
+        'HOST': 'dpg-cpu2oqt2ng1s73ea2c90-a.oregon-postgres.render.com',
+        'PORT': '5432',
+    }
 }
 
 
