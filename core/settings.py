@@ -96,15 +96,15 @@ DATABASES = {
     # }
      'default': dj_database_url.config(
         # Replace this value with your local database's connection string.
-         default='postgresql://mycoffeeshop_user:zFbNXjQn0gfThXufHWHpmymZqAjLR4nl@dpg-cpu2oqt2ng1s73ea2c90-a.oregon-postgres.render.com/myx',
+         default='postgresql://myx_user:BauCBRk7NW448BggRatHOLyJU4lLDn43@dpg-cq24ls5umphs73e90a80-a.oregon-postgres.render.com/myx'
         conn_max_age=600
     )
     #     'default': {
     #     'ENGINE': 'django.db.backends.postgresql',
     #     'NAME': 'myx',
-    #     'USER': 'mycoffeeshop_user',
-    #     'PASSWORD': 'zFbNXjQn0gfThXufHWHpmymZqAjLR4nl',
-    #     'HOST': 'dpg-cpu2oqt2ng1s73ea2c90-a.oregon-postgres.render.com',
+    #     'USER': 'myx_user',
+    #     'PASSWORD': 'BauCBRk7NW448BggRatHOLyJU4lLDn43',
+    #     'HOST': 'dpg-cq24ls5umphs73e90a80-a.oregon-postgres.render.com',
     #     'PORT': '5432',
     # }
   
