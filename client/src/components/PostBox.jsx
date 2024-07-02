@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 const PostBox = ({ setShowPostForm }) => {
+  const URL = import.meta.env.VITE_API_URL;
   const { register, handleSubmit } = useForm();
   const [headers, setHeaders] = useState({
     Authorization: `Token ${localStorage.getItem("token")}`,
@@ -12,7 +13,7 @@ const PostBox = ({ setShowPostForm }) => {
   const onSubmit = handleSubmit((data) => {
     axios
       .post(
-        "http://127.0.0.1:8000/api/post/",
+        `${URL}/api/post/`,
         {
           user: localStorage.getItem("id"),
           content: data.text,

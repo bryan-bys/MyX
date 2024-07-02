@@ -1,4 +1,6 @@
 db.sqlite3
-env
+.env
+.env.development
+.env.productiongit
 __pycache__
 data.json

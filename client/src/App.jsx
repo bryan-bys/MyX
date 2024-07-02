@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { PrivateRoutes } from "./utils/PrivateRoutes";
-import { useEffect, useState } from "react";
 import Home from "./pages/Home";
 import Post from "./pages/Post";
 import Profile from "./pages/Profile";

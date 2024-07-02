@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import PostForm from "../components/PostForm";
 import Comments from "../components/Comments";
-import { CommentForm } from "../components/CommentForm";
 
 const Post = () => {
+  const URL = import.meta.env.VITE_API_URL;
+
   const [posts, setPosts] = useState();
   const [headers, setHeaders] = useState({
     Authorization: `Token ${localStorage.getItem("token")}`,
@@ -15,7 +16,7 @@ const Post = () => {
   useEffect(() => {
     setLikes(false);
     axios
-      .get("http://127.0.0.1:8000/api/post/", {
+      .get(`${URL}/api/post/`, {
         headers: headers,
       })
       .then((res) => {
@@ -30,7 +31,7 @@ const Post = () => {
   const handleLike = (data) => {
     axios
       .post(
-        `http://127.0.0.1:8000/api/like/${data}/`,
+        `${URL}/api/like/${data}/`,
         {},
         {
           headers: headers,

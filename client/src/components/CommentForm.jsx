@@ -3,12 +3,14 @@ import { useState } from "react";
 import axios from "axios";
 
 export const CommentForm = ({ headers, postId, setSendComment }) => {
+  const URL = import.meta.env.VITE_API_URL;
+
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = handleSubmit((data) => {
     axios
       .post(
-        "http://127.0.0.1:8000/api/comment/",
+        `${URL}/api/comment/`,
         {
           user: localStorage.getItem("id"),
           content: data.text,

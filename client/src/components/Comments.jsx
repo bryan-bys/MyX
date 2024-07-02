@@ -3,6 +3,8 @@ import axios from "axios";
 import { CommentForm } from "./CommentForm";
 
 const Comments = ({ postId }) => {
+  const URL = import.meta.env.VITE_API_URL;
+
   const [headers, setHeaders] = useState({
     Authorization: `Token ${localStorage.getItem("token")}`,
   });
@@ -13,7 +15,7 @@ const Comments = ({ postId }) => {
   useEffect(() => {
     setSendComment(false);
     axios
-      .get(`http://127.0.0.1:8000/api/posts/${postId}/comments/`, {
+      .get(`${URL}/api/posts/${postId}/comments/`, {
         headers: headers,
       })
       .then((res) => {

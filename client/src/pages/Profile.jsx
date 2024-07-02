@@ -7,6 +7,8 @@ import PostForm from "../components/PostForm";
 import ProfileInformation from "../components/ProfileInformation";
 
 const Profile = () => {
+  const URL = import.meta.env.VITE_API_URL;
+
   const [userPosts, setUserPosts] = useState([]);
   const [showComment, setShowComment] = useState(false);
   const [likes, setLikes] = useState(false);
@@ -17,7 +19,7 @@ const Profile = () => {
   useEffect(() => {
     setLikes(false);
     axios
-      .get("http://127.0.0.1:8000/api/posts/user_posts/", {
+      .get(`${URL}/api/posts/user_posts/`, {
         headers: headers,
       })
       .then((res) => {
@@ -32,7 +34,7 @@ const Profile = () => {
   const handleLike = (data) => {
     axios
       .post(
-        `http://127.0.0.1:8000/api/like/${data}/`,
+        `${URL}/api/like/${data}/`,
         {},
         {
           headers: headers,
