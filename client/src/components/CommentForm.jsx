@@ -10,7 +10,7 @@ export const CommentForm = ({ headers, postId, setSendComment }) => {
   const onSubmit = handleSubmit((data) => {
     axios
       .post(
-        `https://myx-ttm2.onrender.com/api/comment/`,
+        `${URL}/api/comment/`,
         {
           user: localStorage.getItem("id"),
           content: data.text,

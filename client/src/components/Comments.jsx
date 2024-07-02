@@ -15,7 +15,7 @@ const Comments = ({ postId }) => {
   useEffect(() => {
     setSendComment(false);
     axios
-      .get(`https://myx-ttm2.onrender.com/api/posts/${postId}/comments/`, {
+      .get(`${URL}/api/posts/${postId}/comments/`, {
         headers: headers,
       })
       .then((res) => {

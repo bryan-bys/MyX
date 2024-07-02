@@ -17,7 +17,7 @@ const PostForm = () => {
   const onSubmit = handleSubmit((data) => {
     axios
       .post(
-        `https://myx-ttm2.onrender.com/api/post/`,
+        `${URL}/api/post/`,
         {
           user: localStorage.getItem("id"),
           content: data.text,

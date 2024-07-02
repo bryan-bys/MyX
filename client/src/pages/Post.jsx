@@ -17,7 +17,7 @@ const Post = () => {
     setLikes(false);
     if (!posts) {
       axios
-        .get(`https://myx-ttm2.onrender.com/api/post/`, {
+        .get(`${URL}/api/post/`, {
           headers: headers,
         })
         .then((res) => {
@@ -33,7 +33,7 @@ const Post = () => {
   const handleLike = (data) => {
     axios
       .post(
-        `https://myx-ttm2.onrender.com/api/like/${data}/`,
+        `${URL}/api/like/${data}/`,
         {},
         {
           headers: headers,
