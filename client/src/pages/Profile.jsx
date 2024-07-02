@@ -19,7 +19,7 @@ const Profile = () => {
   useEffect(() => {
     setLikes(false);
     axios
-      .get(`${URL}/api/posts/user_posts/`, {
+      .get(`https://myx-ttm2.onrender.com/api/posts/user_posts/`, {
         headers: headers,
       })
       .then((res) => {

@@ -3,13 +3,13 @@ import axios from "axios";
 const URL = import.meta.env.VITE_API_URL;
 
 export const userRegister = (data) => {
-  return axios.post(`${URL}/users/register/`, data);
+  return axios.post(`https://myx-ttm2.onrender.com/users/register/`, data);
 };
 
 export const userLogin = (data) => {
-  return axios.post(`${URL}/users/login/`, data);
+  return axios.post(`https://myx-ttm2.onrender.com/users/login/`, data);
 };
 
 export const post = (data, token) => {
-  return axios.post(`${URL}/api/post/`, {}, {});
+  return axios.post(`https://myx-ttm2.onrender.com/api/post/`, {}, {});
 };
