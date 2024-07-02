@@ -96,7 +96,7 @@ DATABASES = {
     # }
      'default': dj_database_url.config(
         # Replace this value with your local database's connection string.
-         default='postgresql://myx_user:BauCBRk7NW448BggRatHOLyJU4lLDn43@dpg-cq24ls5umphs73e90a80-a.oregon-postgres.render.com/myx'
+         default='postgresql://mycoffeeshop_user:zFbNXjQn0gfThXufHWHpmymZqAjLR4nl@dpg-cpu2oqt2ng1s73ea2c90-a.oregon-postgres.render.com/myx',
         conn_max_age=600
     )
     #     'default': {
