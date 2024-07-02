@@ -15,17 +15,19 @@ const Post = () => {
 
   useEffect(() => {
     setLikes(false);
-    axios
-      .get(`https://myx-ttm2.onrender.com/api/post/`, {
-        headers: headers,
-      })
-      .then((res) => {
-        setPosts(res.data);
-        console.log(res.data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    if (!posts) {
+      axios
+        .get(`https://myx-ttm2.onrender.com/api/post/`, {
+          headers: headers,
+        })
+        .then((res) => {
+          setPosts(res.data);
+          console.log(res.data);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    }
   }, [likes]);
 
   const handleLike = (data) => {
