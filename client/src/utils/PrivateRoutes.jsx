@@ -3,7 +3,7 @@ import Login from "../pages/Login";
 
 export const PrivateRoutes = ({ children, user }) => {
   if (!localStorage.getItem("token")) {
-    return <Navigate to={<Login />} />;
+    return <Navigate to="/login" />;
   } else {
     return <Outlet />;
   }
