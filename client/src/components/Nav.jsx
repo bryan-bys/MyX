@@ -25,7 +25,7 @@ const Nav = () => {
       <nav className="nav-container small">
         <div className="links-container">
           <NavLink to="/home">
-            <i className="fa-solid fa-house"></i>
+            <i to="/home" className="fa-solid fa-house"></i>
             <p>Home</p>
           </NavLink>
           <NavLink to="/profile">
@@ -43,7 +43,10 @@ const Nav = () => {
             </>
           </button>
           <NavLink>
-            <i className="fa-solid fa-arrow-right-from-bracket"></i>
+            <i
+              onClick={handleLogOut}
+              className="fa-solid fa-arrow-right-from-bracket"
+            ></i>
             <p onClick={handleLogOut}>Log out</p>
           </NavLink>
         </div>
