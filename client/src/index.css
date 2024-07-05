@@ -501,7 +501,7 @@ i {
   padding-left: 0;
 }
 
-.loader-container {
+/* .loader-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -513,7 +513,7 @@ i {
   height: 50px;
   border: 5px solid transparent;
   color: aliceblue;
-  border-top-color: #f9f9f9; /* Color de la parte superior de la T */
+  border-top-color: #f9f9f9; 
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -522,7 +522,7 @@ i {
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
 .timestamp {
   color: rgba(240, 248, 255, 0.491);
@@ -537,7 +537,7 @@ i {
 }
 
 .post-box-background {
-  position: absolute;
+  position: fixed;
   left: 0;
   bottom: 0;
   width: 100vw;
@@ -587,8 +587,8 @@ i {
   }
 
   .post-btn {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
   }
 
   .post-btn p {
@@ -625,6 +625,7 @@ i {
   .main-container {
     width: 100%;
     margin-left: 0;
+    margin-bottom: 50px;
   }
 
   .nav-container {
@@ -665,5 +666,42 @@ i {
     position: absolute;
     bottom: 50px;
     border-radius: 0;
+  }
+}
+
+.loader-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3837377d;
+}
+
+.loader {
+  width: 75px; /* Aumenta el tamaño en un 50% */
+  aspect-ratio: 1;
+  border-radius: 50%;
+  padding: 4.5px; /* Aumenta el padding en un 50% */
+  background: radial-gradient(farthest-side, rgb(0, 0, 0) 95%, #0000) 50% 0/18px
+      18px no-repeat,
+    /* Aumenta el tamaño del background en un 50% */
+      radial-gradient(
+        farthest-side,
+        #0000 calc(100% - 7.5px),
+        /* Aumenta en un 50% */ rgb(0, 0, 0) calc(100% - 6px)
+          /* Aumenta en un 50% */
+      )
+      content-box;
+  animation: l6 2s infinite;
+}
+
+@keyframes l6 {
+  to {
+    transform: rotate(1turn);
   }
 }

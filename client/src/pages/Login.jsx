@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { userLogin } from "../api/users";
 import { NavLink, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import Loader from "../components/Loader";
 
 const Login = () => {
   const {
@@ -11,8 +12,10 @@ const Login = () => {
   } = useForm();
   const [auth, setAuth] = useState(false);
   const [loginError, setLoginError] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = handleSubmit(async (data) => {
+    setLoading(true);
     try {
       const res = await userLogin(data);
       console.log(data);
@@ -33,6 +36,7 @@ const Login = () => {
   return (
     <>
       <div className="login-container">
+        {loading ? <Loader /> : null}
         <h1>T</h1>
         <form id="form-login" onSubmit={onSubmit}>
           {loginError && <p className="login-error">{loginError}</p>}

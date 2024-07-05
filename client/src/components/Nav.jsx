@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink, Navigate } from "react-router-dom";
 import PostBox from "./PostBox";
+import Loader from "./Loader";
 
 const Nav = () => {
   const [showPostForm, setShowPostForm] = useState(false);

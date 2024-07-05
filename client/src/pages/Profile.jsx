@@ -5,10 +5,11 @@ import Comments from "../components/Comments";
 import Post from "./Post";
 import PostForm from "../components/PostForm";
 import ProfileInformation from "../components/ProfileInformation";
+import Loader from "../components/Loader";
 
 const Profile = () => {
   const URL = import.meta.env.VITE_API_URL;
-
+  const [loading, setLoading] = useState(true);
   const [userPosts, setUserPosts] = useState([]);
   const [showComment, setShowComment] = useState(false);
   const [likes, setLikes] = useState(false);
@@ -18,17 +19,21 @@ const Profile = () => {
 
   useEffect(() => {
     setLikes(false);
-    axios
-      .get(`${URL}/api/posts/user_posts/`, {
-        headers: headers,
-      })
-      .then((res) => {
-        setUserPosts(res.data);
-        console.log(res.data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+
+    try {
+      axios
+        .get(`${URL}/api/posts/user_posts/`, {
+          headers: headers,
+        })
+        .then((res) => {
+          setUserPosts(res.data);
+          console.log(res.data);
+        });
+    } catch (error) {
+      console.error("Error:", error);
+    } finally {
+      setLoading(false);
+    }
   }, [likes]);
 
   const handleLike = (data) => {
@@ -54,40 +59,38 @@ const Profile = () => {
         <main>
           <ProfileInformation userPosts={userPosts} />
           <div className="post-container">
-            {userPosts
-              ? userPosts.map((data) => (
-                  <div className="post" key={data.id}>
-                    {!localStorage.getItem("img") ? (
-                      <div className="img-profile">
-                        <i className="fa-regular fa-user"></i>
-                      </div>
-                    ) : (
-                      <img
-                        className="img-profile"
-                        src={localStorage.getItem("img")}
-                      />
-                    )}
-                    <div className="post-content">
-                      <h3 className="name-post">
-                        {localStorage.getItem("username")}
-                      </h3>
-                      <p>{data.content}</p>
-                      <div className="btns-from-post">
-                        <button
-                          className={
-                            data.likes.includes(
-                              localStorage.getItem("username")
-                            )
-                              ? "like-btn activate"
-                              : "like-btn"
-                          }
-                          onClick={() => {
-                            handleLike(data.id);
-                          }}
-                        >
-                          <i className="fa-regular fa-heart"></i>
-                        </button>
-                        {/* <button
+            {userPosts ? (
+              userPosts.map((data) => (
+                <div className="post" key={data.id}>
+                  {!localStorage.getItem("img") ? (
+                    <div className="img-profile">
+                      <i className="fa-regular fa-user"></i>
+                    </div>
+                  ) : (
+                    <img
+                      className="img-profile"
+                      src={localStorage.getItem("img")}
+                    />
+                  )}
+                  <div className="post-content">
+                    <h3 className="name-post">
+                      {localStorage.getItem("username")}
+                    </h3>
+                    <p>{data.content}</p>
+                    <div className="btns-from-post">
+                      <button
+                        className={
+                          data.likes.includes(localStorage.getItem("username"))
+                            ? "like-btn activate"
+                            : "like-btn"
+                        }
+                        onClick={() => {
+                          handleLike(data.id);
+                        }}
+                      >
+                        <i className="fa-regular fa-heart"></i>
+                      </button>
+                      {/* <button
                       onClick={() => {
                         setShowComment(true);
                       }}
@@ -95,16 +98,18 @@ const Profile = () => {
                     >
                       <i className="fa-regular fa-comment"></i>
                     </button> */}
-                        <Comments
-                          showComment={showComment}
-                          setShowComment={setShowComment}
-                          postId={data.id}
-                        />
-                      </div>
+                      <Comments
+                        showComment={showComment}
+                        setShowComment={setShowComment}
+                        postId={data.id}
+                      />
                     </div>
                   </div>
-                ))
-              : null}
+                </div>
+              ))
+            ) : (
+              <Loader />
+            )}
           </div>
         </main>
       </div>
