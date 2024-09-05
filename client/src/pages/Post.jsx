@@ -15,25 +15,23 @@ const Post = () => {
   const [likes, setLikes] = useState(false);
 
   useEffect(() => {
-    setLikes(false);
-    if (!posts) {
-      try {
-        axios
-          .get(`${URL}/api/post/`, {
-            headers: headers,
-          })
-          .then((res) => {
-            setPosts(res.data);
-            console.log(res.data);
-          });
-      } catch (error) {
-        console.error("Error:", error);
-      } finally {
-      }
+    try {
+      axios
+        .get(`${URL}/api/post/`, {
+          headers: headers,
+        })
+        .then((res) => {
+          setPosts(res.data);
+          setLikes(false);
+        });
+    } catch (error) {
+      console.error("Error:", error);
     }
   }, [likes]);
 
   const handleLike = (data) => {
+    setLikes(true);
+
     axios
       .post(
         `${URL}/api/like/${data}/`,
@@ -42,13 +40,9 @@ const Post = () => {
           headers: headers,
         }
       )
-      .then((res) => {
-        console.log(res.data);
-      })
       .catch((error) => {
         console.error("Error:", error);
       });
-    setLikes(true);
   };
 
   return (
@@ -76,13 +70,14 @@ const Post = () => {
                 <p>{data.content}</p>
                 <div className="btns-from-post">
                   <button
-                    className={
+                    className={`like-btn${
                       data.likes.includes(localStorage.getItem("username"))
-                        ? "like-btn activate"
-                        : "like-btn"
-                    }
+                        ? " activate"
+                        : ""
+                    }`}
                     onClick={() => {
                       handleLike(data.id);
+                      setLikes(true);
                     }}
                   >
                     <i className="fa-regular fa-heart"></i>

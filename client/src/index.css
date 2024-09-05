@@ -146,6 +146,7 @@ textarea {
   background-color: black;
   color: aliceblue;
   display: flex;
+  background-color: transparent;
 }
 .like-btn p {
   font-size: 10px;
@@ -155,7 +156,7 @@ textarea {
 
 .like-btn.activate {
   color: rgb(159, 83, 129);
-  animation: likeAnimation 0.5s ease;
+  animation: likeAnimation 0.2s ease;
 }
 
 @keyframes likeAnimation {
